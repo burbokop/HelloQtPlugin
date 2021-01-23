@@ -14,7 +14,6 @@ public:
 
     // Project interface
 public:
-    virtual ProjectExplorer::Tasks projectIssues(const ProjectExplorer::Kit *k) const override;
     virtual ProjectExplorer::ProjectImporter *projectImporter() const override;
     virtual ProjectExplorer::DeploymentKnowledge deploymentKnowledge() const override;
     virtual ProjectExplorer::MakeInstallCommand makeInstallCommand(const ProjectExplorer::Target *target, const QString &installRoot) override;

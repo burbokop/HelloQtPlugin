@@ -14,6 +14,7 @@ Hello::JProjProject::JProjProject(const Utils::FilePath &fileName)
     setHasMakeInstallEquivalent(true);
     setBuildSystemCreator(Hello::BuildSystem::creater());
 
+
 }
 
 Hello::JProjProject::~JProjProject() {
