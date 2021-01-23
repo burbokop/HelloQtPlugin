@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+        <mime-type type="text/x-jproj">
+        <sub-class-of type="application/json"/>
+        <comment>JProj Project file</comment>
+        <glob pattern="*.jproj"/>
+    </mime-type>
+</mime-info>

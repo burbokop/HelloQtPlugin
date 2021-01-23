@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/text-x-jproj-mimetype.xml</file>
+        <file>resources/jproj-icon.png</file>
+        <file>resources/rtfm.md</file>
+    </qresource>
+</RCC>

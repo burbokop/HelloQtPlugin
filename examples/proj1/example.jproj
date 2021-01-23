@@ -1,0 +1,12 @@
+{
+    "files": [
+        "README.md",
+        "resources.qrc",
+        "src/hello.cpp",
+        "src/hello.h"
+    ],
+    "subProjects": [
+        "examples/somelib.jproj"
+    ],
+    "projectName": "MyExampleProject"
+}
