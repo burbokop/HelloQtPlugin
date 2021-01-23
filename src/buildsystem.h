@@ -22,6 +22,8 @@ public:
 
     void updateQmlJSCodeModel();
 
+    void updateRunConfigurations(const Utils::FilePath& entryPointFilePath);
+
 
     static auto creater() {
         return [](ProjectExplorer::Target *target) -> ProjectExplorer::BuildSystem* {

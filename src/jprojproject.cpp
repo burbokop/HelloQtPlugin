@@ -10,7 +10,7 @@ Hello::JProjProject::JProjProject(const Utils::FilePath &fileName)
     setId(Constants::JPROJ_PROJECT_ID);
     setDisplayName(fileName.toFileInfo().baseName());
     setCanBuildProducts();
-    setKnowsAllBuildExecutables(false);
+    setKnowsAllBuildExecutables(true);
     setHasMakeInstallEquivalent(true);
     setBuildSystemCreator(Hello::BuildSystem::creater());
 
@@ -20,12 +20,6 @@ Hello::JProjProject::JProjProject(const Utils::FilePath &fileName)
 Hello::JProjProject::~JProjProject() {
     if(m_projectImporter)
         delete m_projectImporter;
-}
-
-
-ProjectExplorer::Tasks Hello::JProjProject::projectIssues(const ProjectExplorer::Kit *k) const {
-    const auto result = Project::projectIssues(k);
-    return result;
 }
 
 ProjectExplorer::ProjectImporter *Hello::JProjProject::projectImporter() const {

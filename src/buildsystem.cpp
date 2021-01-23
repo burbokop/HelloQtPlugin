@@ -1,17 +1,18 @@
 #include "buildsystem.h"
+#include "runconfiguration.h"
 
 #include <QTimer>
 
 #include <projectexplorer/projectnodes.h>
+#include <projectexplorer/target.h>
 #include <coreplugin/editormanager/editormanager.h>
-
+#include <projectexplorer/runconfiguration.h>
 
 
 
 Hello::BuildSystem::BuildSystem(ProjectExplorer::Target *target)
     : ProjectExplorer::BuildSystem(target) {
     qDebug() << __PRETTY_FUNCTION__;
-
 
     connect(Core::EditorManager::instance(), &Core::EditorManager::documentStateChanged, this, [this](Core::IDocument *document){
         if(document->filePath() == projectFilePath() && !document->isModified())
@@ -30,5 +31,30 @@ void Hello::BuildSystem::updateProjectData() {
     if(p && !parsingResult.projectName.isEmpty())
         p->setDisplayName(parsingResult.projectName);
 
+    updateRunConfigurations(parsingResult.entryPointFilePath);
     setRootProjectNode(std::move(parsingResult.projectNode));
+}
+
+void Hello::BuildSystem::updateRunConfigurations(const Utils::FilePath &entryPointFilePath) {
+    auto t = target();
+    if(t) {
+        RunConfiguration *currentConf = nullptr;
+
+        const auto cc = t->runConfigurations();
+        for(auto&& c : cc) {
+            if(c->id() == RunConfiguration::id) {
+                currentConf = dynamic_cast<RunConfiguration*>(c);
+            } else {
+                t->removeRunConfiguration(c);
+                c->deleteLater();
+            }
+        }
+
+        if(!currentConf) {
+            currentConf = new RunConfiguration(t);
+            t->addRunConfiguration(currentConf);
+        }
+
+        currentConf->setEntryPointFilePath(entryPointFilePath);
+    }
 }

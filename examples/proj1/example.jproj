@@ -1,12 +1,11 @@
 {
     "files": [
         "README.md",
-        "resources.qrc",
-        "src/hello.cpp",
-        "src/hello.h"
+        "example.py"
     ],
     "subProjects": [
-        "examples/somelib.jproj"
+        "mylib/mylib.jproj"
     ],
-    "projectName": "MyExampleProject"
+    "projectName": "MyExampleProject",
+    "entryPoint": "example.py"
 }

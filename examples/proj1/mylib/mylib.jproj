@@ -1,6 +1,6 @@
 {
     "files": [
-        "f.py"
+        "mylib.py"
     ],
     "projectName": "MyLib"
 }

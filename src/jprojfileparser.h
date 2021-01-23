@@ -20,7 +20,7 @@ class JProjFileParser {
 public:
     struct Result {
         std::unique_ptr<ProjectExplorer::ProjectNode> projectNode;
-        Utils::FilePath entryPoint;
+        Utils::FilePath entryPointFilePath;
         QString projectName;
     };
 
