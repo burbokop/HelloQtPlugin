@@ -3,5 +3,6 @@
         <file>resources/text-x-jproj-mimetype.xml</file>
         <file>resources/jproj-icon.png</file>
         <file>resources/rtfm.md</file>
+        <file>resources/run_conf_info.qml</file>
     </qresource>
 </RCC>

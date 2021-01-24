@@ -1,6 +1,9 @@
 #include "runconfiguration.h"
 
 
+#include <QQuickWidget>
+
+
 void Hello::RunConfiguration::setEnabled(bool value) {
     if(m_isEnabled != value) {
         m_isEnabled = value;
@@ -12,6 +15,7 @@ Hello::RunConfiguration::RunConfiguration(ProjectExplorer::Target *target)
     : ProjectExplorer::RunConfiguration(target, id) {
     qDebug() << "rc create";
     setDefaultDisplayName("hello empty configuration");
+    addAspect<WidgetAspect<QQuickWidget>>(QRect(0, 0, 100, 20), QUrl("qrc:/resources/run_conf_info.qml"));
 }
 
 
@@ -23,7 +27,7 @@ void Hello::RunConfiguration::setEntryPointFilePath(const Utils::FilePath &entry
     m_entryPointFilePath = entryPointFilePath;
     m_runnable.setCommandLine(Utils::CommandLine(entryPointFilePath));
     m_runnable.workingDirectory = entryPointFilePath.parentDir().toString();
-    setDisplayName(entryPointFilePath.fileName());
+    setDisplayName(entryPointFilePath.fileName() + " (Jproj config)");
     setEnabled(entryPointFilePath.exists());
     update();
 }
@@ -35,3 +39,5 @@ bool Hello::RunConfiguration::isEnabled() const {
 ProjectExplorer::Runnable Hello::RunConfiguration::runnable() const {
     return m_runnable;
 }
+
+

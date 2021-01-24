@@ -44,9 +44,7 @@ void Hello::BuildSystem::updateRunConfigurations(const Utils::FilePath &entryPoi
         for(auto&& c : cc) {
             if(c->id() == RunConfiguration::id) {
                 currentConf = dynamic_cast<RunConfiguration*>(c);
-            } else {
-                t->removeRunConfiguration(c);
-                c->deleteLater();
+                break;
             }
         }
 
@@ -56,5 +54,7 @@ void Hello::BuildSystem::updateRunConfigurations(const Utils::FilePath &entryPoi
         }
 
         currentConf->setEntryPointFilePath(entryPointFilePath);
+        currentConf->setToolTip("my tool tip");
+        t->setActiveRunConfiguration(currentConf);
     }
 }

@@ -7,6 +7,23 @@
 
 namespace Hello {
 
+template<typename T>
+class WidgetAspect : public Utils::BaseAspect {
+public:
+    template<typename ...Args>
+    WidgetAspect(const QRect& geometry, Args&&... args) {
+        setConfigWidgetCreator([geometry, args...]{
+            auto w = new T(args...);
+            w->setGeometry(geometry);
+            return w;
+        });
+    }
+
+    // ISettingsAspect interface
+protected:
+    virtual void toMap(QVariantMap &) const override {};
+    virtual void fromMap(const QVariantMap &) override {};
+};
 
 
 class RunConfiguration : public ProjectExplorer::RunConfiguration {
@@ -14,6 +31,7 @@ class RunConfiguration : public ProjectExplorer::RunConfiguration {
     bool m_isEnabled = false;
     ProjectExplorer::Runnable m_runnable;
     void setEnabled(bool value);
+
 public:
     static inline Utils::Id id = "Hello.RunConfiguration";
 

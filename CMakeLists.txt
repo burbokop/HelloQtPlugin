@@ -15,7 +15,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 
 find_package(QtCreator COMPONENTS Core ProjectExplorer REQUIRED)
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets QuickWidgets REQUIRED)
 set(QtX Qt${QT_VERSION_MAJOR})
 
 add_qtc_plugin(Hello
@@ -24,6 +24,7 @@ add_qtc_plugin(Hello
     QtCreator::ProjectExplorer
   DEPENDS
     ${QtX}::Widgets
+    ${QtX}::QuickWidgets
     QtCreator::ExtensionSystem
     QtCreator::Utils
   SOURCES
